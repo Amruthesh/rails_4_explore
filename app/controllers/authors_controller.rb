@@ -60,6 +60,11 @@ class AuthorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def search_author
+    @authors = Author.name_like params[:author_name]
+    render action: :index
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

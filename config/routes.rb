@@ -1,5 +1,8 @@
 Rails4::Application.routes.draw do
   
+  get '/author/search', to: 'authors#search_author', as: 'search_author'
+  get '/book/search', to: 'books#search_book', as: 'search_book'
+  
   resources :books
 
   resources :authors

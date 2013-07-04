@@ -1,3 +1,12 @@
 #top_nav
   = link_to "Authors", authors_path
   = link_to "Books", books_path
+  %br
+  = form_tag search_author_path, method: :get do
+    = label_tag :search, "Search Author", style: "float: left;"
+    = text_field_tag :author_name, "", style: "float: left;"
+    = submit_tag "Go"
+  = form_tag search_book_path, method: :get do
+    = label_tag :search, "Search Book", style: "float: left;"
+    = text_field_tag :book_name, "", style: "float: left;"
+    = submit_tag "Go"
