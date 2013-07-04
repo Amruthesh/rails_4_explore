@@ -1,0 +1,13 @@
+%p
+  %strong
+    Name:
+  = @author.name
+%p
+  %strong
+    Age:
+  = @author.age
+= link_to "View Books", books_path(author_id: @author.id )
+|
+= link_to 'Edit', edit_author_path(@author)
+|
+= link_to 'Back', authors_path

@@ -1,0 +1,42 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+
+* Database creation
+	* The Postgres database is used here. We are going to use the postgres hstore extension. 
+	* To enable the postgres extension, first the extension needs to be installed. On Ubuntu use the following command -
+		sudo apt-get install postgresql-contrib
+	* Then add a migration before all the migrations that use the hstore datatype. The migration should continue the code to enable the hstore extension.
+		enable_extension "hstore"
+		The enable_extension method is deprecated and will be removed in the future.
+		
+		
+
+
+	

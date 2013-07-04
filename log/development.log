@@ -1,0 +1,3315 @@
+  [1m[36m (21.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (38.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAuthors (20130704092221)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (33.2ms)[0m  [1mCREATE TABLE "authors" ("id" serial primary key, "name" character varying(255), "age" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130704092221"]]
+  [1m[36m (6.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBooks (20130704092517)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "books" ("id" serial primary key, "details" hstore, "price" float, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::Error: ERROR:  type "hstore" does not exist
+LINE 1: ...TABLE "books" ("id" serial primary key, "details" hstore, "p...
+                                                             ^
+: CREATE TABLE "books" ("id" serial primary key, "details" hstore, "price" float, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (11.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (46.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableHstore (20130704092121)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "hstore"[0m
+PG::Error: ERROR:  could not open extension control file "/usr/share/postgresql/9.1/extension/hstore.control": No such file or directory
+: CREATE EXTENSION IF NOT EXISTS "hstore"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableHstore (20130704092121)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (395.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "hstore"[0m
+  [1m[35mSQL (27.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130704092121"]]
+  [1m[36m (11.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAuthors (20130704092221)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (74.8ms)[0m  [1mCREATE TABLE "authors" ("id" serial primary key, "name" character varying(255), "age" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130704092221"]]
+  [1m[36m (12.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateBooks (20130704092517)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (84.8ms)[0m  [1mCREATE TABLE "books" ("id" serial primary key, "details" hstore, "price" float, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130704092517"]]
+  [1m[36m (12.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:13:23 +0530
+
+Gem::LoadError (Specified 'postgresql' for database adapter, but the gem is not loaded. Add `gem 'pg'` to your Gemfile.):
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:58:in `rescue in resolve_hash_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:55:in `resolve_hash_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:46:in `resolve_string_connection'
+  activerecord (4.0.0) lib/active_record/connection_adapters/connection_specification.rb:30:in `spec'
+  activerecord (4.0.0) lib/active_record/connection_handling.rb:39:in `establish_connection'
+  activerecord (4.0.0) lib/active_record/railtie.rb:175:in `block (2 levels) in <class:Railtie>'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:38:in `instance_eval'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:38:in `execute_hook'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:45:in `block in run_load_hooks'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:44:in `each'
+  activesupport (4.0.0) lib/active_support/lazy_load_hooks.rb:44:in `run_load_hooks'
+  activerecord (4.0.0) lib/active_record/base.rb:322:in `<module:ActiveRecord>'
+  activerecord (4.0.0) lib/active_record/base.rb:22:in `<top (required)>'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `require'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `block in require'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:213:in `load_dependency'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:228:in `require'
+  activerecord (4.0.0) lib/active_record/schema_migration.rb:3:in `<top (required)>'
+  activerecord (4.0.0) lib/active_record/migration.rb:783:in `schema_migrations_table_name'
+  activerecord (4.0.0) lib/active_record/migration.rb:791:in `current_version'
+  activerecord (4.0.0) lib/active_record/migration.rb:800:in `needs_migration?'
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__282629733__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/amruthesh/.rvm/rubies/ruby-2.0.0-p195/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/amruthesh/.rvm/rubies/ruby-2.0.0-p195/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/amruthesh/.rvm/rubies/ruby-2.0.0-p195/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:13:42 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
+Completed 200 OK in 43ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:14:35 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 792ms (Views: 788.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:14:36 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:44 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:16:53 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (21.6ms)
+Completed 200 OK in 27ms (Views: 25.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:17:26 +0530
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-04 15:18:10 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:18:11 +0530
+
+
+Started GET "/authors/new" for 127.0.0.1 at 2013-07-04 15:18:21 +0530
+Processing by AuthorsController#new as HTML
+  Rendered authors/_form.html.erb (21.4ms)
+  Rendered authors/new.html.erb within layouts/application (24.5ms)
+Completed 200 OK in 56ms (Views: 29.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/authors" for 127.0.0.1 at 2013-07-04 15:18:31 +0530
+Processing by AuthorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "author"=>{"name"=>"Amruthesh", "age"=>"25"}, "commit"=>"Create Author"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (10.9ms)[0m  INSERT INTO "authors" ("age", "created_at", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["age", 25], ["created_at", Thu, 04 Jul 2013 09:48:31 UTC +00:00], ["name", "Amruthesh"], ["updated_at", Thu, 04 Jul 2013 09:48:31 UTC +00:00]]
+  [1m[36m (8.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/authors/1
+Completed 302 Found in 24ms (ActiveRecord: 20.2ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:18:31 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.8ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered authors/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:18:31 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:18:33 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:19:47 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (1.0ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:20:22 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:00 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.7ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:21:55 +0530
+
+
+Started GET "/authors/new" for 127.0.0.1 at 2013-07-04 15:21:58 +0530
+Processing by AuthorsController#new as HTML
+  Rendered authors/_form.html.erb (2.3ms)
+  Rendered authors/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:21:59 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.8ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (1.3ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 29ms (Views: 26.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:23:27 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:11 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:24:42 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:25:38 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:27:53 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:27:54 +0530
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:28:11 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered authors/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to BooksBelongsToAuthor (20130704100147)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "books" ADD COLUMN "author_id" integer[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130704100147"]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 25ms (Views: 6.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:22 +0530
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAuthor Load (0.6ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:34:44 +0530
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 24ms (Views: 6.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:36:51 +0530
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 15:36:54 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_top_nav.html.haml (1.1ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:00 +0530
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_top_nav.html.haml (1.7ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:40:20 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:40:24 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.7ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_top_nav.html.haml (1.2ms)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:40:25 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAuthor Load (0.9ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (3.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:40:44 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:40:49 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:40:51 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:40:58 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:41:51 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.erb (25.4ms)
+  Rendered books/new.html.erb within layouts/application (27.8ms)
+  Rendered layouts/_top_nav.html.haml (1.2ms)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:41:53 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.7ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:47:43 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_top_nav.html.haml (1.2ms)
+Completed 200 OK in 12ms (Views: 7.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:44 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.7ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:46 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:50 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (3.2ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:47:53 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:47:59 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (16.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 61ms (Views: 20.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:48:01 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:48:03 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (1.7ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:48:04 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (3.7ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:48:06 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:48:06 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:48:54 +0530
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:48:56 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (1.7ms)
+  Rendered books/new.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (Inconsistent indentation: "      \t" used for indentation, but the rest of the document was indented using 2 spaces.):
+    2:   - if @book.errors.any?
+    3:     #error_explanation
+    4:       %h2
+    5:       	= pluralize(@book.errors.count, "error") 
+    6:       	prohibited this book from being saved:
+    7: 
+    8:       %ul
+  app/views/books/_form.html.haml:5
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457_78627670'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.6ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:48:56 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (0.7ms)
+  Rendered books/new.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Inconsistent indentation: "      \t" used for indentation, but the rest of the document was indented using 2 spaces.):
+    2:   - if @book.errors.any?
+    3:     #error_explanation
+    4:       %h2
+    5:       	= pluralize(@book.errors.count, "error") 
+    6:       	prohibited this book from being saved:
+    7: 
+    8:       %ul
+  app/views/books/_form.html.haml:5
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.1ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:49:15 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (0.8ms)
+  Rendered books/new.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Inconsistent indentation: "      \t" used for indentation, but the rest of the document was indented using 2 spaces.):
+    3:     #error_explanation
+    4:       %h2
+    5:         = pluralize(@book.errors.count, "error") 
+    6:       	prohibited this book from being saved:
+    7: 
+    8:       %ul
+    9:       	- @book.errors.full_messages.each do |msg|
+  app/views/books/_form.html.haml:6
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.3ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:49:21 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (0.8ms)
+  Rendered books/new.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (Inconsistent indentation: "      \t" used for indentation, but the rest of the document was indented using 2 spaces.):
+     6:         prohibited this book from being saved:
+     7: 
+     8:       %ul
+     9:       	- @book.errors.full_messages.each do |msg|
+    10:         %li
+    11:         	= msg
+    12: 
+  app/views/books/_form.html.haml:9
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:49:36 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (1.1ms)
+  Rendered books/new.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (Inconsistent indentation: "        \t " used for indentation, but the rest of the document was indented using 2 spaces.):
+     8:       %ul
+     9:         - @book.errors.full_messages.each do |msg|
+    10:           %li
+    11:         	 = msg
+    12: 
+    13:   .field
+    14:     = f.label :title
+  app/views/books/_form.html.haml:11
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.7ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:49:40 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (22.2ms)
+  Rendered books/new.html.erb within layouts/application (23.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 30ms (Views: 29.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:49:41 +0530
+
+
+Started POST "/books" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.50"}, "commit"=>"Create Book"}
+Unpermitted parameters: title, description
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "books" ("created_at", "price", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 04 Jul 2013 10:20:19 UTC +00:00], ["price", 100.5], ["updated_at", Thu, 04 Jul 2013 10:20:19 UTC +00:00]]
+  [1m[35m (16.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/books/1
+Completed 302 Found in 22ms (ActiveRecord: 17.7ms)
+
+
+Started GET "/books/1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (1.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered books/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:50:19 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 15:50:22 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 15:50:25 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 15:50:26 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[35mBook Load (0.9ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 15:51:01 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  Rendered books/index.html.haml within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (Illegal nesting: nesting within plain text is illegal.):
+    1: <h1>Listing books</h1>
+    2: 
+    3: <table>
+    4:   <thead>
+    5:     <tr>
+    6:       <th>Title</th>
+    7:       <th>Description</th>
+  app/views/books/index.html.haml:4
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (5.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:51:33 +0530
+
+
+Started DELETE "/books/1" for 127.0.0.1 at 2013-07-04 15:55:16 +0530
+Processing by BooksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "id"=>"1"}
+  [1m[35mBook Load (0.8ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  DELETE FROM "books" WHERE "books"."id" = $1  [["id", 1]]
+  [1m[36m (15.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books
+Completed 302 Found in 21ms (ActiveRecord: 18.0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 15:55:16 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (1.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:17 +0530
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 15:55:19 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (6.0ms)
+  Rendered books/new.html.erb within layouts/application (6.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.50"}, "commit"=>"Create Book"}
+Unpermitted parameters: title, description
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("created_at", "price", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 04 Jul 2013 10:25:24 UTC +00:00], ["price", 100.5], ["updated_at", Thu, 04 Jul 2013 10:25:24 UTC +00:00]]
+  [1m[36m (26.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 30ms (ActiveRecord: 27.5ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_top_nav.html.haml (0.4ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:55:24 +0530
+
+
+Started GET "/books/2/edit" for 127.0.0.1 at 2013-07-04 15:59:38 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered books/_form.html.haml (3.7ms)
+  Rendered books/edit.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 33ms (Views: 10.7ms | ActiveRecord: 2.0ms)
+
+
+Started PATCH "/books/2" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.5"}, "commit"=>"Update Book", "id"=>"2"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  UPDATE "books" SET "details" = $1, "updated_at" = $2 WHERE "books"."id" = 2  [["details", {"title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language"}], ["updated_at", Thu, 04 Jul 2013 10:29:41 UTC +00:00]]
+  [1m[36m (124.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 132ms (ActiveRecord: 126.3ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_top_nav.html.haml (0.4ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 15:59:41 +0530
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:00:12 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:00:16 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (5.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:00:42 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:00:44 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (18.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 27ms (Views: 22.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (1.0ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:39:39 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:39:41 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.9ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:39:45 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (3.5ms)
+  Rendered books/new.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:39:49 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (3.1ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (4.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 7.5ms | ActiveRecord: 3.1ms)
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35mAuthor Load (1.0ms)[0m  SELECT "authors".* FROM "authors" ORDER BY "authors"."id" ASC LIMIT 1
+DEPRECATION WARNING: Calling #find(:all) is deprecated. Please call #all directly instead. (called from irb_binding at (irb):3)
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):3)
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT "authors".* FROM "authors" WHERE (id = 2)
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:42:48 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (58.8ms)
+  Rendered books/new.html.erb within layouts/application (59.6ms)
+Completed 500 Internal Server Error in 66ms
+
+ActionView::Template::Error (undefined local variable or method `author_select' for #<#<Class:0xb489b408>:0xb489ad3c>):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :auhtor_id, author_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820__633027708'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820__633027708'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457_78627670'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.8ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:42:48 +0530
+Processing by BooksController#new as HTML
+  Rendered books/_form.html.haml (13.7ms)
+  Rendered books/new.html.erb within layouts/application (14.5ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined local variable or method `author_select' for #<#<Class:0xb489b408>:0x95bec54>):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :auhtor_id, author_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820_78546930'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820_78546930'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (1.0ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (29.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 37ms (Views: 34.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:04 +0530
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:43:05 +0530
+Processing by BooksController#new as HTML
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered books/_form.html.haml (23.7ms)
+  Rendered books/new.html.erb within layouts/application (24.5ms)
+Completed 500 Internal Server Error in 27ms
+
+ActionView::Template::Error (undefined method `auhtor_id' for #<Book:0x95a9548>):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :auhtor_id, authors_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820_78549480'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820_78549480'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457_78627670'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.7ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:43:05 +0530
+Processing by BooksController#new as HTML
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (6.8ms)
+  Rendered books/new.html.erb within layouts/application (7.5ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (undefined method `auhtor_id' for #<Book:0xb4cbdb08>):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :auhtor_id, authors_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820__630826878'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820__630826878'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.9ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:43:14 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:43:16 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (2.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:43:18 +0530
+Processing by BooksController#new as HTML
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered books/_form.html.haml (7.2ms)
+  Rendered books/new.html.erb within layouts/application (8.7ms)
+Completed 500 Internal Server Error in 11ms
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :author_id, authors_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820__629729858'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820__629729858'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457_78627670'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.5ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:43:18 +0530
+Processing by BooksController#new as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (5.8ms)
+  Rendered books/new.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :author_id, authors_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820__629989948'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820__629989948'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:44:17 +0530
+Processing by BooksController#new as HTML
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (33.9ms)
+  Rendered books/new.html.erb within layouts/application (34.5ms)
+Completed 500 Internal Server Error in 40ms
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :author_id, authors_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820__629989948'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820__629989948'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:44:48 +0530
+Processing by BooksController#new as HTML
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (64.6ms)
+  Rendered books/new.html.erb within layouts/application (65.3ms)
+Completed 500 Internal Server Error in 71ms
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    12:   .field
+    13:     = f.label :Author
+    14:     %br/
+    15:     = f.select :author_id, authors_select
+    16:   .field
+    17:     = f.label :title
+    18:     %br/
+  app/views/books/_form.html.haml:15:in `block in _app_views_books__form_html_haml___6989820__629989948'
+  app/views/books/_form.html.haml:1:in `_app_views_books__form_html_haml___6989820__629989948'
+  app/views/books/new.html.erb:3:in `_app_views_books_new_html_erb___29479457__633795468'
+
+
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/amruthesh/.rvm/gems/ruby-2.0.0-p195/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.0ms)
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors"
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+Processing by BooksController#new as HTML
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (36.2ms)
+  Rendered books/new.html.erb within layouts/application (37.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 47ms (Views: 40.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:27 +0530
+
+
+Started POST "/books" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"1", "title"=>"Ruby Programming Language Part II", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.5"}, "commit"=>"Create Book"}
+Unpermitted parameters: author_id
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "books" ("created_at", "details", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Thu, 04 Jul 2013 11:15:45 UTC +00:00], ["details", {"title"=>"Ruby Programming Language Part II", "description"=>"This is a book on the Ruby Programming language"}], ["price", 100.5], ["updated_at", Thu, 04 Jul 2013 11:15:45 UTC +00:00]]
+  [1m[36m (35.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/3
+Completed 302 Found in 42ms (ActiveRecord: 36.2ms)
+
+
+Started GET "/books/3" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "3"]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:45:45 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:45:48 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (2.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:45:48 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (2.6ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (4.3ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 16:45:50 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 16:45:52 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_top_nav.html.haml (1.0ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:45:54 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.9ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/authors/new" for 127.0.0.1 at 2013-07-04 16:45:55 +0530
+Processing by AuthorsController#new as HTML
+  Rendered authors/_form.html.erb (2.4ms)
+  Rendered authors/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 44ms (Views: 43.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/authors" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+Processing by AuthorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "author"=>{"name"=>"Diggs", "age"=>"45"}, "commit"=>"Create Author"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authors" ("age", "created_at", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["age", 45], ["created_at", Thu, 04 Jul 2013 11:16:10 UTC +00:00], ["name", "Diggs"], ["updated_at", Thu, 04 Jul 2013 11:16:10 UTC +00:00]]
+  [1m[35m (20.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/authors/2
+Completed 302 Found in 26ms (ActiveRecord: 21.4ms)
+
+
+Started GET "/authors/2" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAuthor Load (0.6ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered authors/show.html.haml within layouts/application (1.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:10 +0530
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:46:12 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2013-07-04 16:46:13 +0530
+Processing by BooksController#new as HTML
+  [1m[36mAuthor Load (0.7ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (9.4ms)
+  Rendered books/new.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2013-07-04 16:46:36 +0530
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"2", "title"=>"Programming Paradise", "description"=>"This is a book for programmers", "price"=>"50.75"}, "commit"=>"Create Book"}
+Unpermitted parameters: author_id
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "books" ("created_at", "details", "price", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Thu, 04 Jul 2013 11:16:36 UTC +00:00], ["details", {"title"=>"Programming Paradise", "description"=>"This is a book for programmers"}], ["price", 50.75], ["updated_at", Thu, 04 Jul 2013 11:16:36 UTC +00:00]]
+  [1m[36m (26.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/4
+Completed 302 Found in 31ms (ActiveRecord: 27.5ms)
+
+
+Started GET "/books/4" for 127.0.0.1 at 2013-07-04 16:46:36 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered books/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_top_nav.html.haml (0.4ms)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:46:37 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:46:39 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (3.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:46:42 +0530
+Processing by BooksController#index as HTML
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (4.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:46:43 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.7ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/authors/2" for 127.0.0.1 at 2013-07-04 16:46:44 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:46:45 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[36mBook Load (2.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (5.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 16ms (Views: 13.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT "books".* FROM "books" WHERE (author_id = '2')
+  Rendered books/index.html.haml within layouts/application (3.3ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 6.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:47:22 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:47:25 +0530
+Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (22.3ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:47:28 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (16.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 62ms (Views: 20.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/authors/2" for 127.0.0.1 at 2013-07-04 16:47:29 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (1.7ms)
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:47:30 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE (author_id = '2')
+  Rendered books/index.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books" WHERE (author_id = '2')[0m
+  Rendered books/index.html.haml within layouts/application (3.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:48:45 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:48:56 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books"
+  Rendered books/index.html.haml within layouts/application (2.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 34ms (Views: 8.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/books/2/edit" for 127.0.0.1 at 2013-07-04 16:48:57 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (20.9ms)
+  Rendered books/edit.html.erb within layouts/application (22.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 31ms (Views: 26.6ms | ActiveRecord: 2.5ms)
+
+
+Started PATCH "/books/2" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"1", "title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.5"}, "commit"=>"Update Book", "id"=>"2"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+Unpermitted parameters: author_id
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:00 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:49:15 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (2.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 30ms (Views: 7.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:49:19 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (18.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 26ms (Views: 22.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/authors/2" for 127.0.0.1 at 2013-07-04 16:49:20 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:49:21 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE (author_id = '2')
+  Rendered books/index.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:49:22 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  Rendered books/index.html.haml within layouts/application (2.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books/2/edit" for 127.0.0.1 at 2013-07-04 16:49:24 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.7ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered books/_form.html.haml (5.6ms)
+  Rendered books/edit.html.erb within layouts/application (7.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/books/2" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"1", "title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.5"}, "commit"=>"Update Book", "id"=>"2"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "books" SET "author_id" = $1, "updated_at" = $2 WHERE "books"."id" = 2  [["author_id", 1], ["updated_at", Thu, 04 Jul 2013 11:19:26 UTC +00:00]]
+  [1m[36m (21.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 28ms (ActiveRecord: 23.5ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:26 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:49:28 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)
+  Rendered books/index.html.haml within layouts/application (1.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:49:30 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 16:49:30 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.7ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (1.0ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 16:49:31 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE (author_id = '1')[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)
+  Rendered books/index.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:49:33 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.9ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:49:34 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)[0m
+  Rendered books/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books/4" for 127.0.0.1 at 2013-07-04 16:49:36 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered books/show.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books/4/edit" for 127.0.0.1 at 2013-07-04 16:49:37 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (5.0ms)
+  Rendered books/edit.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/books/4" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"1", "title"=>"Programming Paradise", "description"=>"This is a book for programmers", "price"=>"50.75"}, "commit"=>"Update Book", "id"=>"4"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "books" SET "author_id" = $1, "updated_at" = $2 WHERE "books"."id" = 4[0m  [["author_id", 1], ["updated_at", Thu, 04 Jul 2013 11:19:39 UTC +00:00]]
+  [1m[35m (27.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/books/4
+Completed 302 Found in 32ms (ActiveRecord: 28.5ms)
+
+
+Started GET "/books/4" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  Rendered books/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.4ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:39 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:49:40 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books"
+  [1m[36mAuthor Load (0.9ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)[0m
+  Rendered books/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/books/4/edit" for 127.0.0.1 at 2013-07-04 16:49:41 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered books/_form.html.haml (7.5ms)
+  Rendered books/edit.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/books/4" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"2", "title"=>"Programming Paradise", "description"=>"This is a book for programmers", "price"=>"50.75"}, "commit"=>"Update Book", "id"=>"4"}
+  [1m[35mBook Load (1.6ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "books" SET "author_id" = $1, "updated_at" = $2 WHERE "books"."id" = 4  [["author_id", 2], ["updated_at", Thu, 04 Jul 2013 11:19:43 UTC +00:00]]
+  [1m[36m (16.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/books/4
+Completed 302 Found in 22ms (ActiveRecord: 18.8ms)
+
+
+Started GET "/books/4" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:49:43 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:49:44 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.3ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors/2" for 127.0.0.1 at 2013-07-04 16:49:47 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAuthor Load (0.7ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered authors/show.html.haml within layouts/application (1.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:49:48 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT "books".* FROM "books" WHERE (author_id = '2')[0m
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (2)
+  Rendered books/index.html.haml within layouts/application (3.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:49:49 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.7ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_top_nav.html.haml (1.0ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 16:49:50 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 16:49:51 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE (author_id = '1')[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)
+  Rendered books/index.html.haml within layouts/application (3.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:50:03 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)
+  Rendered books/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 12ms (Views: 7.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 16:50:05 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_top_nav.html.haml (0.4ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/2/edit" for 127.0.0.1 at 2013-07-04 16:50:07 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered books/_form.html.haml (5.2ms)
+  Rendered books/edit.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 15ms (Views: 12.4ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/books/2" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"1", "title"=>"Ruby Programming Language", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.5"}, "commit"=>"Update Book", "id"=>"2"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", "2"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/books/2
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/books/2" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered books/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:09 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:50:10 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.2ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 16:50:11 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAuthor Load (2.3ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (1.0ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 16:50:12 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE (author_id = '1')
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)[0m
+  Rendered books/index.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 32ms (Views: 8.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:50:18 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.3ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:50:18 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)
+  Rendered books/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 14ms (Views: 7.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books/3/edit" for 127.0.0.1 at 2013-07-04 16:50:20 +0530
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered books/_form.html.haml (5.5ms)
+  Rendered books/edit.html.erb within layouts/application (6.8ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.2ms)
+
+
+Started PATCH "/books/3" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+Processing by BooksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TyoRBJwgfC1GBycKglLDY7ShzrbTkbPfPYMK0rP2WXk=", "book"=>{"author_id"=>"1", "title"=>"Ruby Programming Language Part II", "description"=>"This is a book on the Ruby Programming language", "price"=>"100.5"}, "commit"=>"Update Book", "id"=>"3"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "books" SET "author_id" = $1, "updated_at" = $2 WHERE "books"."id" = 3[0m  [["author_id", 1], ["updated_at", Thu, 04 Jul 2013 11:20:21 UTC +00:00]]
+  [1m[35m (22.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/books/3
+Completed 302 Found in 28ms (ActiveRecord: 23.4ms)
+
+
+Started GET "/books/3" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  Rendered books/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.4ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:50:21 +0530
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:50:22 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.8ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/authors/1" for 127.0.0.1 at 2013-07-04 16:50:23 +0530
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered authors/show.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 16:50:25 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE (author_id = '1')
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)[0m
+  Rendered books/index.html.haml within layouts/application (4.3ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:50:27 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (5.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:37 +0530
+
+
+Started GET "/books?author_id=2" for 127.0.0.1 at 2013-07-04 16:51:39 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"2"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" WHERE (author_id = '2')
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (2)[0m
+  Rendered books/index.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:51:40 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (6.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books?author_id=1" for 127.0.0.1 at 2013-07-04 16:51:41 +0530
+Processing by BooksController#index as HTML
+  Parameters: {"author_id"=>"1"}
+  [1m[36mBook Load (2.9ms)[0m  [1mSELECT "books".* FROM "books" WHERE (author_id = '1')[0m
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1)
+  Rendered books/index.html.haml within layouts/application (6.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 18ms (Views: 13.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:51:42 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (1.1ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (3.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.6ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (5.7ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/authors.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/books.css?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/books.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/authors.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-07-04 16:51:52 +0530
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:51:54 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)
+  Rendered books/index.html.haml within layouts/application (1.9ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:51:56 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (5.5ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:53:23 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Calling #default_scope without a block is deprecated. For example instead of `default_scope where(color: 'red')`, please use `default_scope { where(color: 'red') }`. (Alternatively you can just redefine self.default_scope.). (called from <class:Book> at /home/amruthesh/github-projects/rails_4_explore/app/models/book.rb:6)
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" ORDER BY id asc
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)[0m
+  Rendered books/index.html.haml within layouts/application (2.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 46ms (Views: 7.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:53:25 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books" ORDER BY id asc
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)[0m
+  Rendered books/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_top_nav.html.haml (0.3ms)
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:53:30 +0530
+Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  Rendered authors/index.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:53:31 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT "books".* FROM "books" ORDER BY id asc[0m
+  [1m[35mAuthor Load (3.7ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)
+  Rendered books/index.html.haml within layouts/application (1.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 21ms (Views: 14.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/authors" for 127.0.0.1 at 2013-07-04 16:53:32 +0530
+Processing by AuthorsController#index as HTML
+  [1m[36mAuthor Load (0.6ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  Rendered authors/index.html.haml within layouts/application (2.8ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2013-07-04 16:53:32 +0530
+Processing by BooksController#index as HTML
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from index at /home/amruthesh/github-projects/rails_4_explore/app/controllers/books_controller.rb:10)
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" ORDER BY id asc
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (1, 2)[0m
+  Rendered books/index.html.haml within layouts/application (1.9ms)
+  Rendered layouts/_top_nav.html.haml (0.2ms)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 0.8ms)
